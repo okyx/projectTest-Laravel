@@ -3,10 +3,10 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Pengguna
+            User
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ route('admin.index') }}"><i class="fa fa-user"></i> Pengguna</a></li>
+            <li><a href="{{ route('admin.index') }}"><i class="fa fa-user"></i> User</a></li>
             <li class="active">Edit</li>
         </ol>
     </section>
@@ -17,7 +17,7 @@
                 <div class="col-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h4 class="box-title">Edit Pengguna</h4>
+                            <h4 class="box-title">Edit User</h4>
                         </div>
                         <form action="{{ route('admin.update', ['admin' => $user->id]) }}" method="POST"
                             onsubmit="return confirm('Pastikan semua data sudah benar?')">

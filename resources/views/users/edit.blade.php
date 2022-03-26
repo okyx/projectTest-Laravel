@@ -35,12 +35,12 @@
                                             <small class="text-danger">{{ $errors->first('username') }}</small>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" id="password" name="password"
-                                                class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                                                placeholder="Masukkan Password">
-                                            <small
-                                                class="text-danger">{{ $errors->first('password') ? $errors->first('password') : 'Kosongkan password jika tidak ingin diubah...' }}</small>
+                                            <label for="email">Email</label>
+                                            <input type="text" id="email" name="email"
+                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+                                                placeholder="Masukkan email"
+                                                value="{{ old('email') ? old('email') : $user->email }}">
+                                            <small class="text-danger">{{ $errors->first('email') }}</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -51,14 +51,6 @@
                                                 placeholder="Masukkan Telepon"
                                                 value="{{ old('telephone') ? old('telephone') : $user->phone }}">
                                             <small class="text-danger">{{ $errors->first('telephone') }}</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" id="email" name="email"
-                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                                placeholder="Masukkan email"
-                                                value="{{ old('email') ? old('email') : $user->email }}">
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
                                         </div>
                                     </div>
                                 </div>

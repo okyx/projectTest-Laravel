@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -80,13 +79,11 @@ class AdminController extends Controller
             'username' => 'required',
             'email' => 'required|email',
             'telephone' => 'required',
-            'password' => 'required'
         ]);
 
         $user->username = $request->username;
         $user->email = $request->email;
         $user->phone = $request->telephone;
-        $user->password = bcrypt($request->password);
         Session::flash('update_user', $user->save());
         return redirect()->route('admin.index');
     }
