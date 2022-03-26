@@ -1,18 +1,20 @@
 version: "3.8"
 
 services:
-    sql:
-        container_name: sql
+    mysql:
+        container_name: mysql
         image: mysql:5.7
+        volumes:
+            - todo-mysql-data:/var/lib/mysql
         ports:
-            - 3306:3306
+            - "3306:3306"
         networks:
             - sql_network
     httpd:
         container_name: httpd
         image: httpd:2.4
         ports:
-            - 80:80
+            - "80:80"
         networks:
             - sql_network
     composer:
@@ -31,6 +33,8 @@ services:
         - MYSQL_DATABASE=projecttest
         - MYSQL_HOST=sql
         - MYSQL_PORT=3306
+    networks:
+        - sql_network
 
 networks:
 sql_network:
