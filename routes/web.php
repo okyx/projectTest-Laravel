@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\API_Controller;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//FUNCTION GENERAL
+
+
+//ROUTE GENERAL
 Route::get('login', [LoginController::class, "index"])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('register', [LoginController::class, "register"]);
 Route::post('signUp', [LoginController::class, "signUp"])->name('signUp');
 Route::post('signIn', [LoginController::class, "signIn"])->name('signIn');
 
-//API
-Route::get('login_API', [API_Controller::class, "login_API"])->name('login_API');
-Route::post('register_API', [API_Controller::class, "register_API"])->name('register_API');
-Route::get('getUser_API', [API_Controller::class, "getUser_API"])->name('getUser_API');
-
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['checkAuth','Revalidate'])->group(function () {
     Route::get('/', function () {
-        return view('layouts.index');
+        return view('login.login');
     })->name('/');
     Route::resource('admin', AdminController::class);
 });

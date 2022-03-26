@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+    sql:
+        container_name: sql
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        networks:
+            - sql_network
+    httpd:
+        container_name: httpd
+        image: httpd:2.4
+        ports:
+            - 80:80
+        networks:
+            - sql_network
+    composer:
+        container_name: composer
+        image: composer:1.0
+        networks:
+            - sql_network
+    php:
+        container_name: php
+        image: php:latest
+        networks:
+            - sql_network
+    environment:
+        - NAME=Docker
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=projecttest
+        - MYSQL_HOST=sql
+        - MYSQL_PORT=3306
+
+networks:
+sql_network:
+    external: true
+    name: sql_network

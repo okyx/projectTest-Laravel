@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class API_Controller extends Controller
@@ -16,9 +17,8 @@ class API_Controller extends Controller
             'password' => "required"
         ]);
 
-        $user = Auth::attempt(['username' => $request->username, 'password' => $request->password]);
-        if ($user) {
-            Auth::login(User::where(['username' => $request->username])->firstOrFail());
+        $user = User::where('username',$request->username)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
             return response()->json(['success' => true, 'message' => 'Login Successful'], 201);
         } else {
             return response()->json(['success' => false, 'message' => 'Login Failed'], 401);
@@ -44,9 +44,9 @@ class API_Controller extends Controller
         return response()->json(['success' => true, 'message' => 'Register Successful'], 201);
     }
 
-    public function getUser_API($id)
+    public function getUser_API(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->query('id'));
         if ($user) {
             return response()->json(['success' => true, 'data' => $user], 200);
         } else {
