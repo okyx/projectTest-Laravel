@@ -7,14 +7,14 @@ services:
         volumes:
             - todo-mysql-data:/var/lib/mysql
         ports:
-            - "3306:3306"
+            - "3307:3306"
         networks:
             - sql_network
     httpd:
         container_name: httpd
         image: httpd:2.4
         ports:
-            - "80:80"
+            - "81:80"
         networks:
             - sql_network
     composer:

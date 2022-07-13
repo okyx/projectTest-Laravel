@@ -1,0 +1,5 @@
+to run docker using sql_network 
+run "docker network create sql_network"
+and make sure ports in our local didnt used by other apps
+ports : "our port: "docker container port"
+and run "docker-compose up -d"
