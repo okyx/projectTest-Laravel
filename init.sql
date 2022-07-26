@@ -1,0 +1,3 @@
+CREATE DATABASE projecttest
+CREATE USER admin WITH PASSWORD "$2a$12$/Z8GSWmK0FyjwoiDMnvXjuu8V.E3zKuCqU.L4yrtwX3MKac4zbbK.";
+GRANT ALL PRIVILEGES ON DATABASE projecttest TO admin;
