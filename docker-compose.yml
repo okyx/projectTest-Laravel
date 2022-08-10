@@ -28,7 +28,7 @@ services:
         networks:
             - sql_network
     php:
-        container_name: php
+        container_name: phpS
         image: php:latest
         networks:
             - sql_network
