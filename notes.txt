@@ -1,0 +1,7 @@
+to run docker using sql_network 
+run "docker network create sql_network"
+and make sure ports in our local we are gonna use didnt used by other apps
+our port runned : exposed port from docker container
+ports : "our port: "docker container port"
+run "Docker build -t laravel ."
+and run "docker-compose up -d"
